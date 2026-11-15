@@ -3,8 +3,8 @@ class Aisync < Formula
 
   desc "Advanced context management for all your AI coding tools (shared rules, journal, claims)"
   homepage "https://maxont.github.io/aisync"
-  url "https://github.com/MaxonT/aisync/releases/download/v0.2.6/aisync-0.2.6.tar.gz"
-  sha256 "9c4368c8585d3e1f7fe13e894a5204aeef6cf8b5c6b7fa855a776cdd825d7cd7"
+  url "https://github.com/MaxonT/aisync/releases/download/v0.2.7/aisync_cli-0.2.7.tar.gz"
+  sha256 "8b5e9f9a9742e46e7787b189d46b1df4322762137b3ab5c4c7a6f322389f16e2"
   license "MIT"
 
   # No depends_on: brew would upgrade a pinned python@3.14. aisync is stdlib-only, so it runs in a
@@ -15,7 +15,7 @@ class Aisync < Formula
   end
 
   test do
-    assert_match "aisync 0.2.6", shell_output("#{bin}/aisync --version")
+    assert_match "aisync 0.2.7", shell_output("#{bin}/aisync --version")
     assert_match "doctor", shell_output("#{bin}/aisync help")
   end
 end
