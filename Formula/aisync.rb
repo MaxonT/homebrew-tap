@@ -11,7 +11,10 @@ class Aisync < Formula
   # venv built from the python@3.14 that is already installed, without touching that formula.
   def install
     odie "python@3.14 must already be installed (it is pinned, so brew will not install it)" unless (Formula["python@3.14"].opt_bin/"python3.14").exist?
-    virtualenv_install_with_resources using: "python@3.14"
+    # Use the python@3.14 binary by its full path: without a depends_on it is not on PATH.
+    python = Formula["python@3.14"].opt_bin/"python3.14"
+    venv = virtualenv_create(libexec, python)
+    venv.pip_install_and_link buildpath
   end
 
   test do
