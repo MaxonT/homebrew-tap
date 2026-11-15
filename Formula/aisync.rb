@@ -7,10 +7,11 @@ class Aisync < Formula
   sha256 "9c4368c8585d3e1f7fe13e894a5204aeef6cf8b5c6b7fa855a776cdd825d7cd7"
   license "MIT"
 
-  depends_on "python@3.14"
-
+  # No depends_on: brew would upgrade a pinned python@3.14. aisync is stdlib-only, so it runs in a
+  # venv built from the python@3.14 that is already installed, without touching that formula.
   def install
-    virtualenv_install_with_resources
+    odie "python@3.14 must already be installed (it is pinned, so brew will not install it)" unless (Formula["python@3.14"].opt_bin/"python3.14").exist?
+    virtualenv_install_with_resources using: "python@3.14"
   end
 
   test do
