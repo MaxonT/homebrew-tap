@@ -1,10 +1,10 @@
 class Aisync < Formula
   include Language::Python::Virtualenv
 
-  desc "Advanced context management for all your AI coding tools (shared rules, journal, claims)"
+  desc "Multi-Agent Context Management, Coordination & Observability for AI coding tools"
   homepage "https://maxont.github.io/aisync"
-  url "https://github.com/MaxonT/aisync/releases/download/v0.2.9/aisync_cli-0.2.9.tar.gz"
-  sha256 "2199e4944724e5c8e3f0604c2e5c372a87bba62e888e6dda5b2be3faea63a644"
+  url "https://github.com/MaxonT/aisync/releases/download/v0.2.10/aisync_cli-0.2.10.tar.gz"
+  sha256 "e9a7aebd173873bd050665e67ec2cf3b59c23ae247e6bc71e0e6edaa1cf3a49f"
   license "MIT"
 
   # No depends_on: brew would upgrade a pinned python@3.14. aisync is stdlib-only, so it runs in a
@@ -18,7 +18,7 @@ class Aisync < Formula
   end
 
   test do
-    assert_match "aisync 0.2.9", shell_output("#{bin}/aisync --version")
+    assert_match "aisync 0.2.10", shell_output("#{bin}/aisync --version")
     assert_match "doctor", shell_output("#{bin}/aisync help")
   end
 end
